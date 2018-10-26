@@ -20,25 +20,26 @@ if __name__ == "__main__":
 
     ndx = 0
     while (PasswordsSolved < 4):
+        if (ndx % 250 == 0):
+            print(str(ndx) + " passwords tested")
         Hash0 = crypt.crypt(Words[ndx], Salts[0])
         Hash1 = crypt.crypt(Words[ndx], Salts[1])
         Hash2 = crypt.crypt(Words[ndx], Salts[2])
         Hash3 = crypt.crypt(Words[ndx], Salts[3])
 
-        if Hash0 in Hashes:
+        if compare_hash(Hash0, Hashes[0]):
             Passwords[0] = Words[ndx]
             print("Found Password:" + Passwords[0])
 
-        if Hash1 in Hashes:
+        if compare_hash(Hash1, Hashes[1]):
             Passwords[1] = Words[ndx]
             print("Found Password:" + Passwords[1])
 
-        if Hash2 in Hashes:
+        if compare_hash(Hash2, Hashes[2]):
             Passwords[2] = Words[ndx]
             print("Found Password:" + Passwords[2])
 
-        if Hash3 in Hashes:
+        if compare_hash(Hash3, Hashes[3]):
             Passwords[3] = Words[ndx]
             print("Found Password:" + Passwords[3])
-
-
+        ndx += 1
